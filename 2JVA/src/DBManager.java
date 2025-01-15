@@ -2,13 +2,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DB {
+public class DBManager {
     private final String url;
     private final String username;
     private final String password;
     private Connection connection;
 
-    public DB(String url, String username, String password) {
+    public DBManager(String url, String username, String password) {
         this.url = "jdbc:mysql://localhost:3306/Ikea";
         this.username = "root";
         this.password = "root";
@@ -21,6 +21,10 @@ public class DB {
         } catch (SQLException e) {
             System.out.println("Database connection failed: " + e.getMessage());
         }
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 
     public void closeConnection() {

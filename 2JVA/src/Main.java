@@ -1,5 +1,8 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        DBManager dbManager = new DBManager("jdbc:mysql://localhost:3306/Ikea", "root", "root");
+        dbManager.connect();
+
+        dbManager.closeConnection();
     }
 }
