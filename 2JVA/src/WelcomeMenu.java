@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Login {
+public class WelcomeMenu {
     public static void main(String[] args) {
         System.out.println("Hello");
 
