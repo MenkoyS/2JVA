@@ -1,15 +1,14 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-public class DBManager {
+public class ConnectionDB {
     private final String url;
     private final String username;
     private final String password;
     private Connection connection;
 
-    public DBManager(String url, String username, String password) {
+    public ConnectionDB(String url, String username, String password) {
         this.url = "jdbc:mysql://localhost:3306/Auchan";
         this.username = "root";
         this.password = "root";

@@ -1,17 +1,14 @@
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
+        GenericSQLExecutor.executeQuery("INSERT INTO User (email, pseudo, password, isUser) VALUES (?, ?, ?, ?)", "john@example.com", "John", "password", true);
 
-        User user = new User();
-        user.setEmail("zpaedaef0");
-        user.setPseudo("zpazd");
-        user.setPassword("zpfeqfn0");
-        user.setIsUser(false);
-
-        DBManager dbManager = new DBManager("jdbc:mysql://localhost:3306/Auchan", "root", "root");
-        dbManager.connect();
-
-        UserRepository.insertIntoDatabase(user);
-
-        dbManager.closeConnection();
+        List<GenericSQLExecutor.ResultSetRow> rows = GenericSQLExecutor.executeQuery("SELECT * FROM User WHERE pseudo = ?", "John");
+        if (rows != null) {
+            for (GenericSQLExecutor.ResultSetRow row : rows) {
+                System.out.println(row);
+            }
+        }
     }
 }
