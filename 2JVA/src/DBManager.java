@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DBManager {
     private final String url;
@@ -9,7 +10,7 @@ public class DBManager {
     private Connection connection;
 
     public DBManager(String url, String username, String password) {
-        this.url = "jdbc:mysql://localhost:3306/Ikea";
+        this.url = "jdbc:mysql://localhost:3306/Auchan";
         this.username = "root";
         this.password = "root";
     }
