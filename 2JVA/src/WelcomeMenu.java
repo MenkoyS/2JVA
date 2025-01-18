@@ -18,8 +18,10 @@ public class WelcomeMenu {
 
         if (choice == 1) {
             System.out.println("Login");
+            LoginPage.main(scanner, args);
         } else if (choice == 2) {
             System.out.println("Register");
+            RegisterPage.main(scanner ,args);
         } else {
             System.out.println("Invalid choice");
         }
