@@ -24,7 +24,7 @@ public class AdminProfile {
                 System.out.println("Manage Users");
                 break;
             case 3:
-                ManageWhitelist.main(args);
+                ManageWhitelist.main(scanner, args);
                 break;
             case 4:
                 System.out.println("Manage Stores");
