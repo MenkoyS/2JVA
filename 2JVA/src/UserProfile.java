@@ -1,3 +1,4 @@
+import javax.swing.text.View;
 import java.util.Scanner;
 
 public class UserProfile {
@@ -23,8 +24,7 @@ public class UserProfile {
                 System.out.println("Inventory: ");
                 break;
             case 2:
-                System.out.println("Profile: ");
-                break;
+                ViewProfile.main(scanner, args);
             case 3:
                 System.out.println("Edit Profile: ");
                 break;
