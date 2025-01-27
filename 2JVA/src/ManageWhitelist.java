@@ -20,7 +20,7 @@ public class ManageWhitelist {
                 RemoveFromWhitelist.main(scanner, args);
                 break;
             case 3:
-                ViewWhitelist.main(args);
+                ViewWhitelist.main(scanner, args);
                 break;
             default:
                 System.out.println("Invalid choice");

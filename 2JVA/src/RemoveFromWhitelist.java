@@ -14,5 +14,6 @@ public class RemoveFromWhitelist {
         else {
             System.out.println("No email found");
         }
+        ManageWhitelist.main(scanner, args);
     }
 }

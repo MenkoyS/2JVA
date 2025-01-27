@@ -3,7 +3,14 @@ import java.util.Scanner;
 
 public class AddToWhitelist {
     public static void main(Scanner scanner, String[] args) {
-        String email = checkCorrespondance(scanner, "email");
+        String email;
+        while (true) {
+            email = checkCorrespondance(scanner, "email");
+            int isTaken = isEmailAvailable(email);
+            if (isTaken == 0) {
+                break;
+            }
+        }
         int storeId = chooseStore(scanner);
         System.out.println("Here are the details: ");
         System.out.println("Email: " + email);
@@ -24,6 +31,7 @@ public class AddToWhitelist {
         } else {
             System.out.println("Invalid choice");
         }
+        ManageWhitelist.main(scanner, args);
     }
 
     public static String checkCorrespondance(Scanner scanner, String inputName) {
@@ -58,18 +66,18 @@ public class AddToWhitelist {
         System.out.println("Enter the store id: ");
         int storeId = scanner.nextInt();
         scanner.nextLine();
+        return storeId;
+    }
 
-        System.out.println("You chose " + storeId + ". Confirm?");
-        System.out.println("1. Yes");
-        System.out.println("2. No");
-        int confirmStore = scanner.nextInt();
-        scanner.nextLine();
+    public static int isEmailAvailable(String email) {
+        List<GenericSQLExecutor.ResultSetRow> rows = GenericSQLExecutor.executeQuery("SELECT email FROM Whitelist WHERE email = '" + email + "'");
 
-        if (confirmStore == 1) {
-            return storeId;
-        } else if (confirmStore == 2) {
-            System.out.println("Not added to Whitelist");
+        if (rows != null && !rows.isEmpty()) {
+            System.out.println("EMAIL ALREADY TAKEN");
+            return 1;
+        } else {
+            System.out.println("EMAIL AVAILABLE");
+            return 0;
         }
-        return 0;
     }
 }
