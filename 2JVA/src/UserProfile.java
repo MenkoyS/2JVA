@@ -26,8 +26,7 @@ public class UserProfile {
                 System.out.println("Profile: ");
                 break;
             case 3:
-                System.out.println("Edit Profile: ");
-                break;
+                EditProfile.main(scanner, args);
             case 4:
                 System.out.println("Search for a user: ");
                 break;
