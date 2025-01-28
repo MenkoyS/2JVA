@@ -1,32 +1,31 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Inventory {
-    public static void main(String[] args) {
-        System.out.println("Inventory");
+    public static void main(Scanner scanner ) {
+        System.out.println("Please Login before accessing the Inventory");
 
-        System.out.println("1. Add item");
-        System.out.println("2. List items");
-        System.out.println("3. Change item quantity");
-        System.out.println("4. Exit");
+        System.out.println("Enter your pseudo: ");
+        String pseudo = scanner.nextLine();
 
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+        System.out.println("Enter your password: ");
+        String password = scanner.nextLine();
 
-        switch (choice) {
-            case 1:
-                System.out.println("Add item");
-                break;
-            case 2:
-                System.out.println("List items");
-                break;
-            case 3:
-                System.out.println("Change item quantity");
-                break;
-            case 4:
-                System.out.println("Exit");
-                break;
-            default:
-                System.out.println("Invalid choice");
+        // do a query that looks in the User table and look for the password of the user with the pseudo
+        List<GenericSQLExecutor.ResultSetRow> doPasswordMatch = GenericSQLExecutor.executeQuery("SELECT * FROM User WHERE pseudo = ? AND password = ?", pseudo, password);
+
+        if (doPasswordMatch == null || doPasswordMatch.isEmpty()) {
+            System.out.println("Invalid credentials");
+            System.exit(1);
+        }
+
+        List<GenericSQLExecutor.ResultSetRow> isAdmin = GenericSQLExecutor.executeQuery("SELECT * FROM User WHERE pseudo = ? AND isUser = ?", pseudo, 0);
+
+        if (isAdmin == null || isAdmin.isEmpty()) {
+            String storeId = DatabaseUtils.fetchSingleColumnValue("SELECT store_id FROM User WHERE pseudo = ?", pseudo);
+            UserInventory.main(scanner, storeId);
+        } else {
+            InventorySelection.main(scanner);
         }
     }
 }
