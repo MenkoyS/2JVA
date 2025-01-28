@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ManageStores {
-    public static void main(Scanner scanner) {
+    public static void main(Scanner scanner, String idUser, String userName) {
         System.out.println("Manage Stores");
 
         System.out.println("1. Add a store");
@@ -14,19 +14,20 @@ public class ManageStores {
 
         switch (choice) {
             case 1:
-                EditStore.AddStore(scanner);
+                EditStore.AddStore(scanner, idUser, userName);
                 break;
             case 2:
-                EditStore.RemoveStore(scanner);
+                EditStore.RemoveStore(scanner, idUser, userName);
                 break;
             case 3:
-                ShowStores.main(scanner);
+                ShowStores.main(scanner, idUser, userName);
                 break;
             case 4:
-                System.out.println("Back to Admin Profile");
+                AdminProfile.main(scanner, idUser, userName);
                 break;
             default:
                 System.out.println("Invalid choice");
+                break;
         }
     }
 }

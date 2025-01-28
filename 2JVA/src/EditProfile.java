@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class EditProfile {
-    public static void main(Scanner scanner, String[] args) {
+    public static void main(Scanner scanner, String idUser, String userName) {
 
         System.out.println("Edit Profile: ");
 
@@ -15,15 +15,16 @@ public class EditProfile {
 
         switch (choice) {
             case 1:
-                ChangePseudo.main(scanner, args);
+                ChangePseudo.main(scanner, idUser, userName);
             case 2:
-                ChangeEmail.main(scanner, args);
+                ChangeEmail.main(scanner, idUser, userName);
             case 3:
-                ChangePassword.main(scanner, args);
+                ChangePassword.main(scanner, idUser, userName);
             case 4:
-                UserProfile.main(args);
+                UserProfile.main(scanner, idUser, userName);
             default:
                 System.out.println("Invalid choice");
+                EditProfile.main(scanner, idUser, userName);
         }
 
 

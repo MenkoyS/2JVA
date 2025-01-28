@@ -2,20 +2,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ChangePseudo {
-    public static void main(Scanner scanner, String[] args) {
-        int id = 7;
+    public static void main(Scanner scanner, String idUser, String userName) {
+
         System.out.print("Enter new pseudo : ");
         scanner.nextLine();
         String choice = scanner.nextLine();
         int isTaken = isPseudoAvailable(choice);
         if (isTaken == 0) {
-            GenericSQLExecutor.executeQuery("UPDATE User SET pseudo = ? WHERE id = ?", choice, id);
+            GenericSQLExecutor.executeQuery("UPDATE User SET pseudo = ? WHERE id = ?", choice, idUser);
             System.out.println("Pseudo successfully changed");
         }
         else {
             System.out.println("Pseudo already exists");
         }
-        EditProfile.main(scanner, args);
+        EditProfile.main(scanner, idUser, userName);
     }
 
     public static int isPseudoAvailable(String pseudo) {

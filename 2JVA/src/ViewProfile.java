@@ -2,12 +2,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ViewProfile {
-    public static void main(Scanner scanner, String[] args) {
+    public static void main(Scanner scanner, String idUser, String userName) {
         // Fetch all users pseudo and email
-        int id = 7;
-        List<GenericSQLExecutor.ResultSetRow> emailRows = GenericSQLExecutor.executeQuery("SELECT email FROM User WHERE id = ?", id);
-        List<GenericSQLExecutor.ResultSetRow> pseudoRows = GenericSQLExecutor.executeQuery("SELECT pseudo FROM User WHERE id = ?", id);
-        List<GenericSQLExecutor.ResultSetRow> storeIdRows = GenericSQLExecutor.executeQuery("SELECT store_id FROM User WHERE id = ?", id);
+        List<GenericSQLExecutor.ResultSetRow> emailRows = GenericSQLExecutor.executeQuery("SELECT email FROM User WHERE id = ?", idUser);
+        List<GenericSQLExecutor.ResultSetRow> pseudoRows = GenericSQLExecutor.executeQuery("SELECT pseudo FROM User WHERE id = ?", idUser);
+        List<GenericSQLExecutor.ResultSetRow> storeIdRows = GenericSQLExecutor.executeQuery("SELECT store_id FROM User WHERE id = ?", idUser);
 
         if (emailRows == null || pseudoRows == null || storeIdRows == null || emailRows.isEmpty() || pseudoRows.isEmpty() || storeIdRows.isEmpty()) {
             System.out.println("No users found.");
@@ -25,6 +24,6 @@ public class ViewProfile {
         System.out.println("Press enter to continue...");
         scanner.nextLine();// Need 2 next lines to work
         scanner.nextLine();
-        UserProfile.main(args);
+        UserProfile.main(scanner, idUser, userName);
     }
 }

@@ -21,5 +21,7 @@ public class SearchByUsername {
         String storeName = DatabaseUtils.fetchSingleColumnValue("SELECT name FROM Store WHERE store_id = ?", storeId);
 
         System.out.println("Email: " + email + " | Pseudo: " + pseudo + " | Affiliation: " + storeName);
+
+
     }
 }

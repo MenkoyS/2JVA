@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class RegisterPage {
-    public static void main(Scanner scanner, String[] args) {
+    public static void main(Scanner scanner) {
         String[] userDetails = RegisterPageInteractions.Register(scanner);
 
-        RegisterPageVerify.verify(scanner, userDetails, args);
+        RegisterPageVerify.verify(scanner, userDetails);
 
         System.out.println("You have successfully registered");
         System.out.println("Would you like to login now ?");
@@ -16,10 +16,10 @@ public class RegisterPage {
 
         if (choice == 1) {
             System.out.println("Redirecting you to the login page...");
-            LoginPage.main(scanner, args);
+            LoginPage.main(scanner);
         } else if (choice == 2) {
             System.out.println("Redirecting you to the welcome menu...");
-            WelcomeMenu.main(args);
+            // TEMPORARY
         } else {
             System.out.println("Invalid choice");
         }

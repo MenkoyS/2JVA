@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ShowStores {
-    public static void main(Scanner scanner) {
+    public static void main(Scanner scanner, String idUser, String userName) {
         List<GenericSQLExecutor.ResultSetRow> stores = GenericSQLExecutor.executeQuery("SELECT name FROM Store");
 
         if (stores == null || stores.isEmpty()) {
@@ -14,5 +14,6 @@ public class ShowStores {
                 System.out.println(storeName);
             }
         }
+        ManageStores.main(scanner, idUser, userName);
     }
 }

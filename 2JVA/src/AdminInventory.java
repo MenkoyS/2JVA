@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AdminInventory {
-    public static void main(Scanner scanner, String storeId) {
+    public static void main(Scanner scanner, String storeId, String idUser, String userName) {
         System.out.println(storeId);
 
         List<GenericSQLExecutor.ResultSetRow> inventory = GenericSQLExecutor.executeQuery("SELECT * FROM Inventory WHERE store_id = ?", storeId);
@@ -21,29 +21,27 @@ public class AdminInventory {
         System.out.println("2. Remove an item");
         System.out.println("3. Increase a quantity");
         System.out.println("4. Decrease a quantity");
-        System.out.println("5. Go back");
+        System.out.println("5. Cancel");
 
         int choice = scanner.nextInt();
 
         switch (choice) {
             case 1:
-                EditItem.add(scanner, storeId);
+                EditItem.add(scanner, storeId, idUser, userName);
                 break;
             case 2:
-                EditItem.remove(scanner, storeId);
+                EditItem.remove(scanner, storeId, idUser, userName);
                 break;
             case 3:
-                System.out.println("Enter the name of the item you would like to increase the quantity of: ");
-                String itemNameIncrease = scanner.next();
-                EditItem.increase(scanner, itemNameIncrease, storeId);
+                EditItem.increase(scanner, storeId, idUser, userName);
                 break;
             case 4:
                 System.out.println("Enter the name of the item you would like to decrease the quantity of: ");
                 String itemNameDecrease = scanner.next();
-                EditItem.decrease(scanner, itemNameDecrease, storeId);
+                EditItem.decrease(scanner, storeId, idUser, userName);
                 break;
             case 5:
-                break;
+                AdminProfile.main(scanner, idUser, userName);
             default:
                 System.out.println("Invalid choice");
                 break;

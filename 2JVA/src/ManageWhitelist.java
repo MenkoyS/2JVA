@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ManageWhitelist {
-    public static void main(Scanner scanner, String[] args) {
+    public static void main(Scanner scanner, String idUser, String userName) {
         System.out.println("Manage Whitelist");
 
         System.out.println("1. Add to Whitelist");
@@ -14,13 +14,11 @@ public class ManageWhitelist {
 
         switch (choice) {
             case 1:
-                AddToWhitelist.main(scanner, args);
-                break;
+                AddToWhitelist.main(scanner, idUser, userName);
             case 2:
-                RemoveFromWhitelist.main(scanner, args);
-                break;
+                RemoveFromWhitelist.main(scanner, idUser, userName);
             case 3:
-                ViewWhitelist.main(scanner, args);
+                ViewWhitelist.main(scanner);
                 break;
             default:
                 System.out.println("Invalid choice");

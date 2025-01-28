@@ -26,12 +26,10 @@ public class GenericSQLExecutor {
                 return processResultSet(resultSet);
             } else {
                 preparedStatement.executeUpdate();
-                System.out.println("Query executed successfully.");
                 return null;
             }
         } catch (SQLException e) {
             System.out.println("SQL execution failed: " + e);
-            e.printStackTrace();
             return null;
         } finally {
             try {
@@ -43,7 +41,6 @@ public class GenericSQLExecutor {
                 }
                 if (connection != null) {
                     connection.close();
-                    System.out.println("Connection closed successfully.");
                 }
             } catch (SQLException e) {
                 System.out.println("Failed to close resources: " + e);

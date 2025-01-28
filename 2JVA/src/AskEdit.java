@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AskEdit {
-    public static void main(Scanner scanner, String type) {
+    public static void main(Scanner scanner, String type, String idUser, String userName) {
         List<GenericSQLExecutor.ResultSetRow> userInfo = GenericSQLExecutor.executeQuery("SELECT * FROM User WHERE pseudo = ? OR email = ?", type, type);
         System.out.println("Here are the user's details: " + userInfo);
         System.out.println("What do you want to edit?");
@@ -24,6 +24,7 @@ public class AskEdit {
                 EditInfo.changeAffiliation(type, scanner);
                 break;
             case 4:
+                AdminProfile.main(scanner, idUser, userName);
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");

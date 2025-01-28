@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DeleteProfileVerify {
-    public static void main(Scanner scanner) {
+    public static void main(Scanner scanner, String idUser, String userName) {
         System.out.println("Please enter your email to delete your profile: ");
         String email = scanner.next();
 
@@ -14,8 +14,12 @@ public class DeleteProfileVerify {
         if (rows!=null && !rows.isEmpty()) {
             GenericSQLExecutor.executeQuery("DELETE FROM User WHERE email = '" + email + "' AND password = '" + password + "';");
             System.out.println("Profile deleted successfully!");
+
+            // Redirect to the login page
+            System.out.println("Redirecting to the welcome page...");
+            WelcomeMenu.main(scanner);
         } else {
-            System.out.println("Invalid password, profile not deleted.");
+            System.out.println("Invalid credentials, profile not deleted.");
         }
     }
 }

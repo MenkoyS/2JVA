@@ -17,6 +17,7 @@ public class ExtractValue {
         queryResult = queryResult.replaceAll("quantity\\s*:", ""); // Added to remove 'quantity:'
         queryResult = queryResult.replaceAll("price\\s*:", ""); // Added to remove 'price:'
         queryResult = queryResult.replaceAll("id\\s*:", ""); // Added to remove 'id:'
+        queryResult = queryResult.replaceAll("isUser\\s*:", "");
 
         // Step 4: Extract the string value
         Pattern pattern = Pattern.compile("\\w+@\\w+\\.\\w+|\\w+"); // Match email or alphanumeric strings

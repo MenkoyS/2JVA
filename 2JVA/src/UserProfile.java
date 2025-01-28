@@ -1,10 +1,9 @@
+import javax.swing.text.View;
 import java.util.Scanner;
 
 public class UserProfile {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Hello User !");
+    public static void main(Scanner scanner, String idUser, String userName) {
+        System.out.println("Hello " + userName + " !");
 
         System.out.println("Welcome to your profile ! ");
         System.out.println("1. See the inventory");
@@ -20,25 +19,25 @@ public class UserProfile {
 
         switch (choice) {
             case 1:
-                System.out.println("Inventory: ");
+                PrintInventory.main(scanner, idUser, userName);
                 break;
             case 2:
-                System.out.println("Profile: ");
+                ViewProfile.main(scanner, idUser, userName);
                 break;
             case 3:
-                System.out.println("Edit Profile: ");
+                EditProfile.main(scanner, idUser, userName);
                 break;
             case 4:
-                System.out.println("Search for a user: ");
+                UserSearch.main(scanner, idUser, userName);
                 break;
             case 5:
-                System.out.println("Create a new account: ");
+                CreateNewUser.main(scanner, idUser, userName);
                 break;
             case 6:
-                System.out.println("Logout: ");
+                // BYE BYE
                 break;
             case 7:
-                System.out.println("Delete Profile: ");
+                DeleteProfile.main(scanner, idUser, userName);
                 break;
             default:
                 System.out.println("Invalid choice");

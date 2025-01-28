@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RemoveFromWhitelist {
-    public static void main(Scanner scanner, String[] args) {
+    public static void main(Scanner scanner, String idUser, String userName) {
         System.out.println("Who do you want to remove from the whitelist ?");
         System.out.print("Please enter your choice : ");
         String email = scanner.nextLine();
@@ -14,6 +14,6 @@ public class RemoveFromWhitelist {
         else {
             System.out.println("No email found");
         }
-        ManageWhitelist.main(scanner, args);
+        ManageWhitelist.main(scanner, idUser, userName);
     }
 }

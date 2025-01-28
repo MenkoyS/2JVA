@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class CreateNewUser {
-    public static void main(Scanner scanner) {
+    public static void main(Scanner scanner, String idUser, String userName) {
 
         System.out.println("Enter the email: ");
         String email = scanner.nextLine();
@@ -23,7 +23,7 @@ public class CreateNewUser {
 
         CreateNewUserManager.AddUserToDatabase(email, pseudo, password);
 
-        CreateNewUserManager.Redirection(scanner);
+        CreateNewUserManager.Redirection(scanner, idUser, userName);
 
         }
     }

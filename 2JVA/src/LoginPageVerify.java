@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class LoginPageVerify {
 
-    public static void verify(Scanner scanner, String[] userDetails, String[] args) {
+    public static void verify(Scanner scanner, String[] userDetails) {
 
         String email = userDetails[0];
         String password = userDetails[1];
@@ -16,11 +16,10 @@ public class LoginPageVerify {
         if (rows != null && !rows.isEmpty()) {
             System.out.println("You have successfully logged in");
             System.out.println("Redirecting you to your profile...");
-            System.exit(0);
-            // TODO : Call the homepage function
+            Verif.isAdminLogin(email, scanner);
         } else {
             System.out.println("Invalid email or password");
-            WelcomeMenu.main(args);
+            GuiMenu.main(scanner);
         }
 
     }

@@ -1,10 +1,9 @@
 import java.util.Scanner;
 
 public class AdminProfile {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public static void main(Scanner scanner, String idUser, String userName) {
 
-        System.out.println("Hello Admin !");
+        System.out.println("Hello " + userName + " !");
 
         System.out.println("Welcome to your profile ! ");
         System.out.println("1. Manage the inventory");
@@ -18,22 +17,23 @@ public class AdminProfile {
 
         switch (choice) {
             case 1:
-                System.out.println("Manage the inventory");
+                InventorySelection.main(scanner, idUser, userName);
                 break;
             case 2:
-                System.out.println("Manage Users");
+                ManageUsers.main(scanner, idUser, userName);
                 break;
             case 3:
-                System.out.println("Manage Whitelist");
+                ManageWhitelist.main(scanner, idUser, userName);
                 break;
             case 4:
-                System.out.println("Manage Stores");
+                ManageStores.main(scanner, idUser, userName);
                 break;
             case 5:
-                System.out.println("Logout");
+                WelcomeMenu.main(scanner);
                 break;
             default:
                 System.out.println("Invalid choice");
+                break;
         }
     }
 }

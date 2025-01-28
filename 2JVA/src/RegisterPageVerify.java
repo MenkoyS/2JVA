@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class RegisterPageVerify {
 
-    public static void verify(Scanner scanner, String[] userDetails, String[] args) {
+    public static void verify(Scanner scanner, String[] userDetails) {
 
         String pseudo = userDetails[0];
         String email = userDetails[1];
@@ -18,11 +18,11 @@ public class RegisterPageVerify {
                 GenericSQLExecutor.executeQuery("DELETE FROM Whitelist WHERE email = ?", email);
             } else {
                 System.out.println("Passwords do not match");
-                WelcomeMenu.main(args);
+                // temp
             }
         } else {
             System.out.println("Email is not whitelisted, please contact the administrator");
-            WelcomeMenu.main(args);
+            // temp
         }
     }
 }

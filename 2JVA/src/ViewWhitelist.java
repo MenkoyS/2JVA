@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ViewWhitelist {
-    public static void main(Scanner scanner, String[] args) {
+    public static void main(Scanner scanner, String idUser, String userName) {
         // Fetch all users storeId and email
         List<GenericSQLExecutor.ResultSetRow> emailRows = GenericSQLExecutor.executeQuery("SELECT email FROM Whitelist");
         List<GenericSQLExecutor.ResultSetRow> storeIdRows = GenericSQLExecutor.executeQuery("SELECT store_id FROM Whitelist");
@@ -19,6 +19,6 @@ public class ViewWhitelist {
             System.out.println("Email: " + email + " | Affiliation: " + storeId);
         }
         System.out.println();
-        ManageWhitelist.main(scanner, args);
+        ManageWhitelist.main(scanner, idUser, userName);
     }
 }

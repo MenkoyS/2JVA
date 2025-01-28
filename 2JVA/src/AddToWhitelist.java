@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AddToWhitelist {
-    public static void main(Scanner scanner, String[] args) {
+    public static void main(Scanner scanner, String idUser, String userName) {
         String email;
         while (true) {
             email = checkCorrespondance(scanner, "email");
@@ -31,7 +31,7 @@ public class AddToWhitelist {
         } else {
             System.out.println("Invalid choice");
         }
-        ManageWhitelist.main(scanner, args);
+        ManageWhitelist.main(scanner, idUser, userName);
     }
 
     public static String checkCorrespondance(Scanner scanner, String inputName) {

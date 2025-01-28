@@ -5,7 +5,7 @@ public class CreateNewUserManager {
         GenericSQLExecutor.executeQuery("INSERT INTO User (email, pseudo, password, isUser) VALUES (?, ?, ?, ?)", email, pseudo, password, 1);
     }
 
-    public static void Redirection(Scanner scanner) {
+    public static void Redirection(Scanner scanner, String idUser, String userName) {
         System.out.println("Do you want to go to the login page ?");
         System.out.println("1. Yes");
         System.out.println("2. No");
@@ -14,14 +14,14 @@ public class CreateNewUserManager {
 
         switch (choice) {
             case 1:
-                // TODO : Call Login Page
+                LoginPage.main(scanner);
                 break;
             case 2:
-                // TODO : Comeback to profile menu
+                UserProfile.main(scanner, idUser, userName);
                 break;
             default:
                 System.out.println("Invalid choice, returning to the profile menu");
-                CreateNewUserManager.Redirection(scanner);
+                UserProfile.main(scanner, idUser, userName);
         }
     }
 }

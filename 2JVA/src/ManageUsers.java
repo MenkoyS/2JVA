@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ManageUsers {
-    public static void main(Scanner scanner) {
+    public static void main(Scanner scanner, String idUser, String userName) {
         System.out.println("Find an user to edit:");
 
         System.out.println("1. Find by pseudo");
@@ -13,13 +13,14 @@ public class ManageUsers {
         switch (choice) {
             case 1:
                 String pseudo = SelectUser.FindByPseudo(scanner);
-                AskEdit.main(scanner, pseudo);
+                AskEdit.main(scanner, pseudo, idUser, userName);
                 break;
             case 2:
                 String email = SelectUser.FindByEmail(scanner);
-                AskEdit.main(scanner, email);
+                AskEdit.main(scanner, email, idUser, userName);
                 break;
             case 3:
+                AdminProfile.main(scanner, idUser, userName);
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
