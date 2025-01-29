@@ -1,3 +1,5 @@
+import Menus.WelcomeMenu;
+
 import java.util.Scanner;
 
 public class Main {
