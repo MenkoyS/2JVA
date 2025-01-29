@@ -27,7 +27,6 @@ public class ViewProfile {
         }
         System.out.println();
         System.out.println("Press enter to continue...");
-        scanner.nextLine();// Need 2 next lines to work
         scanner.nextLine();
         UserProfile.main(scanner, idUser, userName);
     }

@@ -1,7 +1,9 @@
 package User;
 
+import Database.GenericSQLExecutor;
 import Utils.CreateNewUserVerify;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class CreateNewUser {

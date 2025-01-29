@@ -18,11 +18,21 @@ public class ManageUsers {
         switch (choice) {
             case 1:
                 String pseudo = SelectUser.FindByPseudo(scanner);
-                AskEdit.main(scanner, pseudo);
+                if (pseudo != null) {
+                    AskEdit.main(scanner, pseudo);
+                }
+                else {
+                    AdminProfile.main(scanner);
+                }
                 break;
             case 2:
                 String email = SelectUser.FindByEmail(scanner);
-                AskEdit.main(scanner, email);
+                if (email != null) {
+                    AskEdit.main(scanner, email);
+                }
+                else {
+                    AdminProfile.main(scanner);
+                }
                 break;
             case 3:
                 AdminProfile.main(scanner);

@@ -31,7 +31,7 @@ public class EditStore {
 
         if (stores == null || stores.isEmpty()) {
             System.out.println("Store does not exist");
-            RemoveStore(scanner);
+            ManageStores.main(scanner);
         } else {
             GenericSQLExecutor.executeQuery("DELETE FROM Store WHERE name = ?", storeName);
             System.out.println("Store removed successfully");

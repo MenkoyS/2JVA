@@ -1,5 +1,6 @@
 package Admin;
 import Database.GenericSQLExecutor;
+import User.ChangeEmail;
 import Utils.Verif;
 
 import java.util.List;
@@ -8,49 +9,49 @@ import java.util.Scanner;
 public class AddToWhitelist {
     public static void main(Scanner scanner) {
         String email;
-        while (true) {
-            email = checkCorrespondance(scanner, "email");
-            int isTaken = isEmailAvailable(email);
-            if (isTaken == 0) {
-                break;
-            }
+        email = checkCorrespondance(scanner, "email");
+        int isTaken = isEmailAvailable(email);
+        if (isTaken == 1) {
+            ManageWhitelist.main(scanner);
         }
-        int storeId = chooseStore(scanner);
-        System.out.println("Here are the details: ");
-        System.out.println("Email: " + email);
-        System.out.println("Store id : " + storeId);
+        else {
+            int storeId = chooseStore(scanner);
+            System.out.println("Here are the details: ");
+            System.out.println("Email: " + email);
+            System.out.println("Store id : " + storeId);
 
-        System.out.println("You are adding " + email + " to the store " + storeId + ". Confirm?");
-        System.out.println("1. Yes");
-        System.out.println("2. No");
-        System.out.println("3. Go back");
+            System.out.println("You are adding " + email + " to the store " + storeId + ". Confirm?");
+            System.out.println("1. Yes");
+            System.out.println("2. No");
+            System.out.println("3. Go back");
 
-        int choice = Verif.isEntryValid(1, 3, scanner);
+            int choice = Verif.isEntryValid(1, 3, scanner);
 
-        switch (choice) {
-            case 1:
-                GenericSQLExecutor.executeQuery("INSERT INTO Whitelist (email, store_id) VALUES (?, ?)", email, storeId);
-                System.out.println("Added to Whitelist");
-                ManageWhitelist.main(scanner);
-                break;
-            case 2:
-                System.out.println("Not added to Whitelist");
-                ManageWhitelist.main(scanner);
-                break;
-            case 3:
-                ManageWhitelist.main(scanner);
-                break;
-            default:
-                System.out.println("Invalid choice");
-                AddToWhitelist.main(scanner);
-                break;
+            switch (choice) {
+                case 1:
+                    GenericSQLExecutor.executeQuery("INSERT INTO Whitelist (email, store_id) VALUES (?, ?)", email, storeId);
+                    System.out.println("Added to Whitelist");
+                    ManageWhitelist.main(scanner);
+                    break;
+                case 2:
+                    System.out.println("Not added to Whitelist");
+                    ManageWhitelist.main(scanner);
+                    break;
+                case 3:
+                    ManageWhitelist.main(scanner);
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+                    AddToWhitelist.main(scanner);
+                    break;
+            }
         }
     }
 
     public static String checkCorrespondance(Scanner scanner, String inputName) {
         String input1;
         String input2;
-
+        scanner.nextLine();
         while (true) {
             System.out.println("Enter the " + inputName + ": ");
             input1 = scanner.nextLine().trim();
@@ -90,8 +91,7 @@ public class AddToWhitelist {
             System.out.println("EMAIL ALREADY TAKEN");
             return 1;
         } else {
-            System.out.println("EMAIL AVAILABLE");
-            return 0;
+            return ChangeEmail.isEmailAvailable(email);
         }
     }
 }

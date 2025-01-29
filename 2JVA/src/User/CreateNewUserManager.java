@@ -4,6 +4,7 @@ import Database.GenericSQLExecutor;
 import Menus.LoginPage;
 import Utils.Verif;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class CreateNewUserManager {

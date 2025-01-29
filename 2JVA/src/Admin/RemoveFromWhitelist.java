@@ -9,6 +9,7 @@ public class RemoveFromWhitelist {
     public static void main(Scanner scanner) {
         System.out.println("Who do you want to remove from the whitelist ?");
         System.out.print("Please enter your choice : ");
+        scanner.nextLine();
         String email = scanner.nextLine();
         List<GenericSQLExecutor.ResultSetRow> checkValidity = GenericSQLExecutor.executeQuery("SELECT * FROM Whitelist WHERE email = ?", email);
         if (checkValidity != null && !checkValidity.isEmpty()) {
