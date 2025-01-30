@@ -25,7 +25,7 @@ public class EditProfile {
             case 3:
                 ChangePassword.main(scanner, idUser, userName);
             case 4:
-                UserProfile.main(scanner, idUser, userName);
+                UserProfile.main(scanner, idUser, userName, false);
             default:
                 System.out.println("Invalid choice");
                 EditProfile.main(scanner, idUser, userName);

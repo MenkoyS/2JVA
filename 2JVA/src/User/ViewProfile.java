@@ -28,6 +28,6 @@ public class ViewProfile {
         System.out.println();
         System.out.println("Press enter to continue...");
         scanner.nextLine();
-        UserProfile.main(scanner, idUser, userName);
+        UserProfile.main(scanner, idUser, userName, false);
     }
 }

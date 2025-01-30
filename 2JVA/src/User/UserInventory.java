@@ -35,7 +35,7 @@ public class UserInventory {
                 EditItem.decrease(scanner, storeId, idUser, userName);
                 break;
             case 3:
-                UserProfile.main(scanner, idUser, userName);
+                UserProfile.main(scanner, idUser, userName, false);
                 break;
             default:
                 System.out.println("Invalid choice");

@@ -4,8 +4,8 @@ import Utils.Verif;
 
 import java.util.Scanner;
 
-public class GuiMenu {
-    public static void main(Scanner scanner) {
+public class CliMenu {
+    public static void main(Scanner scanner, boolean isGui) {
 
         System.out.println("Would you like to login or to register ?");
         System.out.println("1. Login");
@@ -19,16 +19,16 @@ public class GuiMenu {
 
         switch (choice) {
             case 1:
-                LoginPage.main(scanner);
+                LoginPage.main(scanner, false);
                 break;
             case 2:
-                RegisterPage.main(scanner);
+                RegisterPage.main(scanner, false);
                 break;
             case 3:
                 WelcomeMenu.main(scanner);
                 break;
             default:
-                GuiMenu.main(scanner);
+                CliMenu.main(scanner, false);
                 break;
         }
     }

@@ -21,14 +21,14 @@ public class CreateNewUserManager {
 
         switch (choice) {
             case 1:
-                LoginPage.main(scanner);
+                LoginPage.main(scanner, false);
                 break;
             case 2:
-                UserProfile.main(scanner, idUser, userName);
+                UserProfile.main(scanner, idUser, userName, false);
                 break;
             default:
                 System.out.println("Invalid choice, returning to the profile menu");
-                UserProfile.main(scanner, idUser, userName);
+                UserProfile.main(scanner, idUser, userName, false);
         }
     }
 }

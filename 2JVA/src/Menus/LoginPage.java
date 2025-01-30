@@ -6,9 +6,9 @@ import Utils.LoginPageVerify;
 import java.util.Scanner;
 
 public class LoginPage {
-    public static void main(Scanner scanner) {
-        String[] userDetails = LoginPageInteractions.Login(scanner);
-        LoginPageVerify.verify(scanner, userDetails);
+    public static void main(Scanner scanner, boolean isGui) {
+        String[] userDetails = LoginPageInteractions.Login(scanner, false);
+        LoginPageVerify.verify(scanner, userDetails, false);
 
     }
 }

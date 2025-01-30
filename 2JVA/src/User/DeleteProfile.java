@@ -18,7 +18,7 @@ public class DeleteProfile {
                 DeleteProfileVerify.main(scanner, idUser, userName);
                 break;
             case 2:
-                UserProfile.main(scanner, idUser, userName);
+                UserProfile.main(scanner, idUser, userName, false);
                 break;
             default:
                 System.out.println("Invalid choice");

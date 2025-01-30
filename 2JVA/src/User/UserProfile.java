@@ -7,7 +7,7 @@ import Utils.Verif;
 import java.util.Scanner;
 
 public class UserProfile {
-    public static void main(Scanner scanner, String idUser, String userName) {
+    public static void main(Scanner scanner, String idUser, String userName, boolean isGui) {
         System.out.println("Hello " + userName + " !");
 
         System.out.println("Welcome to your profile ! ");

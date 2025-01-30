@@ -1,5 +1,6 @@
 package Menus;
 
+import Swing.WelcomePage;
 import Utils.Verif;
 
 import java.util.Scanner;
@@ -14,15 +15,15 @@ public class WelcomeMenu {
         System.out.println("2. Swing GUI");
         System.out.println("3. Exit");
 
+        boolean isGui;
         int choice = Verif.isEntryValid(1, 3, scanner);
 
         switch (choice) {
             case 1:
-                GuiMenu.main(scanner);
+                CliMenu.main(scanner, false);
                 break;
             case 2:
-                System.out.println("Swing GUI");
-                // lancer le swing qu'on va faire après
+                WelcomePage.displayWelcomePage(1200, 800, scanner);
                 break;
             case 3:
                 System.exit(0);

@@ -18,7 +18,7 @@ public class SearchQueries {
                 SearchByStore.searchByStore(scanner);
                 break;
             case 4:
-                UserProfile.main(scanner, idUser, userName);
+                UserProfile.main(scanner, idUser, userName, false);
             default:
                 System.out.println("Invalid choice");
                 // TODO : recall to the function
