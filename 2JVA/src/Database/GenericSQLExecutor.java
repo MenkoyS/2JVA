@@ -84,12 +84,11 @@ public class GenericSQLExecutor {
 
         @Override
         public String toString() {
-            StringBuilder sb = new StringBuilder("{");
+            StringBuilder sb = new StringBuilder();
             for (Column column : columns) {
-                sb.append(column.getName()).append(": ").append(column.getValue()).append(", ");
+                sb.append(column.getName()).append(" : ").append(column.getValue()).append(" | ");
             }
             if (!columns.isEmpty()) sb.setLength(sb.length() - 2); // Remove trailing comma
-            sb.append("}");
             return sb.toString();
         }
 

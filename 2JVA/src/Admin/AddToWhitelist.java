@@ -17,7 +17,7 @@ public class AddToWhitelist {
         else {
             int storeId = chooseStore(scanner);
             System.out.println("Here are the details: ");
-            System.out.println("Email: " + email);
+            System.out.println("Email : " + email);
             System.out.println("Store id : " + storeId);
 
             System.out.println("You are adding " + email + " to the store " + storeId + ". Confirm?");
