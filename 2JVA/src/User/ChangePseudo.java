@@ -15,6 +15,7 @@ public class ChangePseudo {
         if (isTaken == 0) {
             GenericSQLExecutor.executeQuery("UPDATE User SET pseudo = ? WHERE id = ?", choice, idUser);
             System.out.println("Pseudo successfully changed");
+            userName = choice;
         }
         else {
             System.out.println("Pseudo already exists");
