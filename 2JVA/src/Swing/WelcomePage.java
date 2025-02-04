@@ -1,11 +1,10 @@
 package Swing;
 
-import java.util.Scanner;
 import javax.swing.*;
 import java.awt.*;
 
 public class WelcomePage {
-    public static void displayWelcomePage(int frameWidth, int frameHeight, Scanner scanner) {
+    public static void displayWelcomePage(int frameWidth, int frameHeight) {
 
         // Create a frame
         JFrame frame = new JFrame("iStore");
@@ -31,18 +30,18 @@ public class WelcomePage {
         register.setBounds(500, 300, 200, 50);
 
         // Add an action listener to the button
-        register.addActionListener(e -> {
+        register.addActionListener(_ -> {
             frame.dispose();
-            RegisterPage.displayRegisterPage(frameWidth, frameHeight, scanner);
+            RegisterPage.displayRegisterPage(frameWidth, frameHeight);
         });
 
         JButton login = new JButton("Login");
         login.setBounds(500, 400, 200, 50);
 
         // Add an action listener to the button
-        login.addActionListener(e -> {
+        login.addActionListener(_ -> {
             frame.dispose();
-            LoginPage.displayLoginPage(frameWidth, frameHeight, scanner);
+            LoginPage.displayLoginPage(frameWidth, frameHeight);
         });
 
 

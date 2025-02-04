@@ -23,7 +23,7 @@ public class WelcomeMenu {
                 CliMenu.main(scanner, false);
                 break;
             case 2:
-                WelcomePage.displayWelcomePage(1200, 800, scanner);
+                WelcomePage.displayWelcomePage(1200, 800);
                 break;
             case 3:
                 System.exit(0);

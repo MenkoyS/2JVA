@@ -1,53 +1,92 @@
 package Swing;
 
+import Database.DatabaseUtils;
+import Database.GenericSQLExecutor;
+
 import javax.swing.*;
 import java.awt.*;
-import java.util.Scanner;
 
 public class UserGUI {
-    public static void main(int frameWidth, int frameHeight, Scanner scanner) {
-        // Create a frame
-        JFrame frame = new JFrame("User Profile");
-        frame.setSize(frameWidth, frameHeight); // Set the size of the frame
+    public static void main(String email, int frameWidth, int frameHeight) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("User Profile");
+            frame.setSize(frameWidth, frameHeight);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Set the close operation for the frame
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            JLabel welcomeLabel = new JLabel("Welcome to your profile!", SwingConstants.CENTER);
+            welcomeLabel.setFont(new Font("Arial", Font.BOLD, 36));
 
-        // Create a label with the text "Welcome to your profile!"
-        JLabel welcomeLabel = new JLabel("Welcome to your profile!", SwingConstants.CENTER);
-        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 36)); // Set font for the label
+            JButton inventoryButton = new JButton("See the inventory");
+            inventoryButton.addActionListener(_ -> {
+                frame.dispose();
+                SeeInventory.main(email, frameWidth, frameHeight);
+            });
 
-        // Create buttons
-        JButton inventoryButton = new JButton("See the inventory");
-        JButton viewProfileButton = new JButton("View Profile");
-        JButton editProfileButton = new JButton("Edit Profile");
-        JButton searchUserButton = new JButton("Search for a user");
-        JButton createAccountButton = new JButton("Create a new account");
-        JButton logoutButton = new JButton("Logout");
-        JButton deleteProfileButton = new JButton("Delete Profile");
+            JButton viewProfileButton = new JButton("View Profile");
+            viewProfileButton.addActionListener(_ -> {
+                frame.dispose();
+                ViewProfile.main(email, frameWidth, frameHeight);
+            });
 
-        // Set up a panel with a layout to add buttons below the label
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(7, 1, 10, 10)); // 7 rows, 1 column, with padding between buttons
+            JButton searchUserButton = new JButton("Search for a user");
+            searchUserButton.addActionListener(_ -> {
+                frame.dispose();
+                UserSearch.main(email, frameWidth, frameHeight);
+            });
 
-        // Add the buttons to the panel
-        buttonPanel.add(inventoryButton);
-        buttonPanel.add(viewProfileButton);
-        buttonPanel.add(editProfileButton);
-        buttonPanel.add(searchUserButton);
-        buttonPanel.add(createAccountButton);
-        buttonPanel.add(logoutButton);
-        buttonPanel.add(deleteProfileButton);
+            JButton createAccountButton = new JButton("Create a new account");
+            createAccountButton.addActionListener(_ -> {
+                frame.dispose();
+                CreateNewAcc.main(email, frameWidth, frameHeight);
+            });
 
-        // Set the layout for the frame's content pane
-        frame.setLayout(new BorderLayout());
-        frame.add(welcomeLabel, BorderLayout.NORTH); // Add label at the top
-        frame.add(buttonPanel, BorderLayout.CENTER); // Add buttons in the center
+            JButton logoutButton = new JButton("Logout");
+            logoutButton.addActionListener(_ -> {
+                if (JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Warning", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    frame.dispose();
+                    WelcomePage.displayWelcomePage(frameWidth, frameHeight);
+                }
+            });
 
-        // Center the frame on the screen
-        frame.setLocationRelativeTo(null);
+            JButton deleteProfileButton = new JButton("Delete Profile");
+            String storedPassword = DatabaseUtils.fetchSingleColumnValue("SELECT password FROM User WHERE email = ?", email);
 
-        // Make the frame visible
-        frame.setVisible(true);
+            deleteProfileButton.addActionListener(_ -> {
+                if (JOptionPane.showConfirmDialog(null, "Are you sure you want to delete your profile?", "Warning", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    JTextField emailField = new JTextField();
+                    JPasswordField passwordField = new JPasswordField();
+                    Object[] message = {"Enter your email:", emailField, "Enter your password:", passwordField};
+
+                    if (JOptionPane.showConfirmDialog(null, message, "Profile Deletion - Verification", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+                        String enteredEmail = emailField.getText();
+                        String enteredPassword = new String(passwordField.getPassword());
+
+                        if (enteredEmail.equals(email) && enteredPassword.equals(storedPassword)) {
+                            GenericSQLExecutor.executeQuery("DELETE FROM User WHERE email = ? AND password = ?", enteredEmail, enteredPassword);
+                            JOptionPane.showMessageDialog(null, "Profile deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                            frame.dispose();
+                            WelcomePage.displayWelcomePage(frameWidth, frameHeight);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Wrong credentials. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }
+            });
+
+            JPanel buttonPanel = new JPanel();
+            buttonPanel.setLayout(new GridLayout(6, 1, 10, 10));
+            buttonPanel.add(inventoryButton);
+            buttonPanel.add(viewProfileButton);
+            buttonPanel.add(searchUserButton);
+            buttonPanel.add(createAccountButton);
+            buttonPanel.add(logoutButton);
+            buttonPanel.add(deleteProfileButton);
+
+            frame.setLayout(new BorderLayout());
+            frame.add(welcomeLabel, BorderLayout.NORTH);
+            frame.add(buttonPanel, BorderLayout.CENTER);
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
     }
 }
