@@ -9,7 +9,7 @@ public class ManageStores {
         int frameWidth = 1200; // Width of the frame
         int frameHeight = 800; // Height of the frame
         // Create a frame
-        JFrame frame = new JFrame("CLI.User Profile");
+        JFrame frame = new JFrame("User Profile");
         frame.setSize(frameWidth, frameHeight); // Set the size of the frame
 
         // Set the close operation for the frame

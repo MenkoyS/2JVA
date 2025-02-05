@@ -52,7 +52,7 @@ public class RegisterPage {
                 JOptionPane.showMessageDialog(null, "This email is not allowed to register", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 if (passwordRegis.equals(confirmPasswordRegis)) {
-                    GenericSQLExecutor.executeQuery("INSERT INTO CLI.User (pseudo, email, password) VALUES (?, ?, ?)", pseudoRegis, emailRegis, passwordRegis);
+                    GenericSQLExecutor.executeQuery("INSERT INTO User (pseudo, email, password) VALUES (?, ?, ?)", pseudoRegis, emailRegis, passwordRegis);
                     GenericSQLExecutor.executeQuery("DELETE FROM Whitelist WHERE email = ?", emailRegis);
                     JOptionPane.showMessageDialog(null, "Account created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                     frame.dispose();

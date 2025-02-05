@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class UserManage {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("CLI.User Management");
+        JFrame frame = new JFrame("User Management");
         frame.setSize(1200, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());

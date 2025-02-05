@@ -29,7 +29,7 @@ public class CreateNewUserVerify {
     }
 
     public static void isPseudoAvailable(String pseudo, Scanner scanner) {
-        List<GenericSQLExecutor.ResultSetRow> rows = GenericSQLExecutor.executeQuery("SELECT * FROM CLI.User WHERE pseudo = '" + pseudo + "'");
+        List<GenericSQLExecutor.ResultSetRow> rows = GenericSQLExecutor.executeQuery("SELECT * FROM User WHERE pseudo = '" + pseudo + "'");
 
         if (rows != null && !rows.isEmpty()) {
             System.out.println("PSEUDO ALREADY TAKEN");

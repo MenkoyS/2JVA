@@ -3,7 +3,6 @@ package CLI.User;
 import CLI.Common.PrintInventory;
 import CLI.Common.UserSearch;
 import CLI.Menus.WelcomeMenu;
-import Swing.WelcomePage;
 import Utils.Verif;
 
 import java.util.Scanner;

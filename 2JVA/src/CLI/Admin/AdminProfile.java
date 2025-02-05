@@ -1,5 +1,6 @@
 package CLI.Admin;
 
+import CLI.Menus.CliMenu;
 import CLI.Menus.WelcomeMenu;
 import Utils.Verif;
 
@@ -29,7 +30,7 @@ public class AdminProfile {
             case 2 -> ManageUsers.menu(scanner);
             case 3 -> ManageWhitelist.reception(scanner);
             case 4 -> ManageStores.reception(scanner);
-            case 5 -> WelcomeMenu.launch(scanner);
+            case 5 -> CliMenu.menu(scanner);
             default -> {
                 System.out.println("Invalid choice");
                 reception(scanner);

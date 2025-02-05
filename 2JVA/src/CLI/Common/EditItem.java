@@ -2,10 +2,11 @@ package CLI.Common;
 
 import CLI.Admin.AdminInventory;
 import Database.GenericSQLExecutor;
-import CLI.User.UserInventory;
 import Utils.Verif;
 
 import java.util.Scanner;
+
+import static Utils.Verif.verifyAdmin;
 
 public class EditItem {
     public static void increase(Scanner scanner, String storeId, String idUser, String userName) {
@@ -15,34 +16,40 @@ public class EditItem {
         System.out.println("Enter the quantity you would like to increase by: ");
         int quantityIncrease = Verif.getValidEntry(1, 49, scanner);
 
-        GenericSQLExecutor.executeQuery("UPDATE Inventory SET quantity = quantity + ? WHERE name = ? AND store_id = ?", quantityIncrease, itemNameIncrease, storeId);
+        // check if the item exists in the inventory chosen
+        if (GenericSQLExecutor.executeQuery("SELECT * FROM Inventory WHERE name = ? AND store_id = ?", itemNameIncrease, storeId) == null) {
+            System.out.println("Item does not exist in the inventory");
+            verifyAdmin(scanner, idUser, userName);
+        }
 
-        // Add a verify function here to check if :
-        // the item exists in the inventory chosen
-        // the quantity does not exceed 50 nor go below 0
+        GenericSQLExecutor.executeQuery("UPDATE Inventory SET quantity = quantity + ? WHERE name = ? AND store_id = ?", quantityIncrease, itemNameIncrease, storeId);
 
         System.out.println("Quantity increased by " + quantityIncrease);
         System.out.println("New quantity: " + GenericSQLExecutor.executeQuery("SELECT quantity FROM Inventory WHERE name = ? AND store_id = ?", itemNameIncrease, storeId));
 
-        Verif.verifyAdmin(scanner, idUser, userName);
+        verifyAdmin(scanner, idUser, userName);
     }
+
     public static void decrease(Scanner scanner, String storeId, String idUser, String userName) {
         System.out.println("Enter the name of the item you would like to decrease the quantity of: ");
         String itemNameDecrease = scanner.next();
 
+        // check if the item exists in the inventory chosen
+        if (GenericSQLExecutor.executeQuery("SELECT * FROM Inventory WHERE name = ? AND store_id = ?", itemNameDecrease, storeId) == null) {
+            System.out.println("Item does not exist in the inventory");
+            verifyAdmin(scanner, idUser, userName);
+        }
+
         System.out.println("Enter the quantity you would like to decrease by: ");
         int quantityDecrease = Verif.getValidEntry(1, 49, scanner);
 
-        GenericSQLExecutor.executeQuery("UPDATE Inventory SET quantity = quantity - ? WHERE name = ? AND store_id = ?", quantityDecrease, itemNameDecrease, storeId);
 
-        // Add a verify function here to check if :
-        // the item exists in the inventory chosen
-        // the quantity does not exceed 50 nor go below 0
+        GenericSQLExecutor.executeQuery("UPDATE Inventory SET quantity = quantity - ? WHERE name = ? AND store_id = ?", quantityDecrease, itemNameDecrease, storeId);
 
         System.out.println("Quantity decreased by " + quantityDecrease);
         System.out.println("New quantity: " + GenericSQLExecutor.executeQuery("SELECT quantity FROM Inventory WHERE name = ? AND store_id = ?", itemNameDecrease, storeId));
 
-        UserInventory.storeInventory(scanner, idUser, userName);
+        verifyAdmin(scanner, idUser, userName);
     }
 
     public static void add(Scanner scanner, String storeId) {
@@ -61,6 +68,7 @@ public class EditItem {
 
         AdminInventory.manageStoreInventory(scanner, storeId);
     }
+
     public static void remove(Scanner scanner, String storeId) {
         System.out.println("Enter the name of the item you would like to remove: ");
         String itemNameRemove = scanner.next();

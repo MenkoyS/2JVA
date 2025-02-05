@@ -10,7 +10,7 @@ import static Swing.LoginPage.createBackButton;
 
 public class SeeInventory {
     public static void main(String email, int frameWidth, int frameHeight) {
-        String storeAffiliated = DatabaseUtils.fetchSingleColumnValue("SELECT store_id FROM CLI.User WHERE email = ?", email);
+        String storeAffiliated = DatabaseUtils.fetchSingleColumnValue("SELECT store_id FROM User WHERE email = ?", email);
 
         JFrame frame = new JFrame("Inventory");
         frame.setSize(frameWidth, frameHeight);
