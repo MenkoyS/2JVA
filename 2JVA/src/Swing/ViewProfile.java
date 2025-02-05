@@ -39,7 +39,7 @@ public class ViewProfile {
         JTextField pseudoLabel = new JTextField();
         pseudoLabel.setFont(textFieldFont);
         pseudoLabel.setBounds(frameWidth / 2 - 100, 300, 200, 40);
-        String pseudo = DatabaseUtils.fetchSingleColumnValue("SELECT pseudo FROM User WHERE email = ?", email);
+        String pseudo = DatabaseUtils.fetchSingleColumnValue("SELECT pseudo FROM CLI.User WHERE email = ?", email);
         pseudoLabel.setText(pseudo);
         pseudoLabel.setHorizontalAlignment(JTextField.CENTER);
 
@@ -53,7 +53,7 @@ public class ViewProfile {
         JTextField storeNameLabel = new JTextField();
         storeNameLabel.setFont(textFieldFont);
         storeNameLabel.setBounds(frameWidth / 2 - 100, 500, 200, 40);
-        String storeId = DatabaseUtils.fetchSingleColumnValue("SELECT store_id FROM User WHERE email = ?", email);
+        String storeId = DatabaseUtils.fetchSingleColumnValue("SELECT store_id FROM CLI.User WHERE email = ?", email);
         String storeName = DatabaseUtils.fetchSingleColumnValue("SELECT name FROM Store WHERE store_id = ?", storeId);
         storeNameLabel.setText(storeName);
         storeNameLabel.setEditable(false);

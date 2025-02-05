@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class LoginPageInteractions {
 
-    public static String[] Login(Scanner scanner, boolean isGui) {
+    public static String[] Login(Scanner scanner) {
         System.out.println("Login Page");
 
         System.out.println("Enter your email: ");

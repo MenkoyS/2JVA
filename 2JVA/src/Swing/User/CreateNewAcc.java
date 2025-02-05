@@ -1,21 +1,20 @@
-package Swing;
+package Swing.User;
 
-import Database.DatabaseUtils;
-import Database.GenericSQLExecutor;
+import Swing.UserGUI;
 
 import javax.swing.*;
 import java.awt.*;
 
 import static Swing.LoginPage.createBackButton;
 
-public class RegisterPage {
-    public static void displayRegisterPage(int frameWidth, int frameHeight) {
+public class CreateNewAcc {
+    public static void main(String email, int frameWidth, int frameHeight) {
         JFrame frame = new JFrame("iStore - Register Page");
         frame.setSize(frameWidth, frameHeight);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
 
-        JLabel backButton = createBackButton(frame, () -> WelcomePage.displayWelcomePage(frameWidth, frameHeight));
+        JLabel backButton = createBackButton(frame, () -> UserGUI.main(email, frameWidth, frameHeight));
         frame.add(backButton);
 
         JLabel text = new JLabel("Register Form", SwingConstants.CENTER);
@@ -26,14 +25,13 @@ public class RegisterPage {
         Font textFieldFont = new Font("Arial", Font.PLAIN, 18);
 
         JTextField pseudo = createPlaceholderTextField("Enter your pseudo", frameWidth, 200, textFieldFont);
+        String NewPseudo = pseudo.getText();
         JTextField emailLabel = createPlaceholderTextField("Enter your email", frameWidth, 300, textFieldFont);
+        String NewEmail = emailLabel.getText();
         JTextField password = createPlaceholderTextField("Enter your password", frameWidth, 400, textFieldFont);
+        String NewPassword = password.getText();
         JTextField confirmPassword = createPlaceholderTextField("Confirm your password", frameWidth, 500, textFieldFont);
-
-        String pseudoRegis = pseudo.getText();
-        String emailRegis = emailLabel.getText();
-        String passwordRegis = password.getText();
-        String confirmPasswordRegis = confirmPassword.getText();
+        String NewConfirmPassword = confirmPassword.getText();
 
         frame.add(pseudo);
         frame.add(emailLabel);
@@ -44,23 +42,22 @@ public class RegisterPage {
         register.setFont(new Font("Arial", Font.BOLD, 20));
         register.setBounds(frameWidth / 2 - 100, 600, 200, 50);
 
-        // Add an action listener to the button
         register.addActionListener(_ -> {
-            String verifEmail = DatabaseUtils.fetchSingleColumnValue("SELECT email FROM Whitelist WHERE email = ?", emailRegis);
+            int choice = JOptionPane.showConfirmDialog(
+                    null,
+                    "Would you like to login with this new account?",
+                    "Confirmation",
+                    JOptionPane.YES_NO_OPTION
+            );
 
-            if (verifEmail == null) {
-                JOptionPane.showMessageDialog(null, "This email is not allowed to register", "Error", JOptionPane.ERROR_MESSAGE);
+            if (choice == JOptionPane.YES_OPTION) {
+                System.out.println(NewEmail);
+                UserGUI.main(NewEmail, frameWidth, frameHeight);
             } else {
-                if (passwordRegis.equals(confirmPasswordRegis)) {
-                    GenericSQLExecutor.executeQuery("INSERT INTO CLI.User (pseudo, email, password) VALUES (?, ?, ?)", pseudoRegis, emailRegis, passwordRegis);
-                    GenericSQLExecutor.executeQuery("DELETE FROM Whitelist WHERE email = ?", emailRegis);
-                    JOptionPane.showMessageDialog(null, "Account created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    frame.dispose();
-                    LoginPage.displayLoginPage(frameWidth, frameHeight);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Passwords do not match", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }});
+                UserGUI.main(email, frameWidth, frameHeight);
+            }
+        });
+
 
         frame.add(register);
 

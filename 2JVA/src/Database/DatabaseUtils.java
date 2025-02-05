@@ -17,7 +17,7 @@ public class DatabaseUtils {
 
         // Check if empty
         if (rows == null || rows.isEmpty()) {
-            return null; /// if empty, return null
+            return null; // if empty, return null
         }
         // Extract value
         return ExtractValue.extractValue(rows.toString());

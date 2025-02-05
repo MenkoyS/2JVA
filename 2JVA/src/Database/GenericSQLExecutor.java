@@ -74,40 +74,17 @@ public class GenericSQLExecutor {
             columns.add(new Column(name, value));
         }
 
-        public Object getValue(String columnName) {
-            return columns.stream()
-                    .filter(column -> column.getName().equals(columnName))
-                    .findFirst()
-                    .map(Column::getValue)
-                    .orElse(null);
-        }
-
         @Override
         public String toString() {
             StringBuilder sb = new StringBuilder();
             for (Column column : columns) {
-                sb.append(column.getName()).append(" : ").append(column.getValue()).append(" | ");
+                sb.append(column.name()).append(" : ").append(column.value()).append(" | ");
             }
             if (!columns.isEmpty()) sb.setLength(sb.length() - 2); // Remove trailing comma
             return sb.toString();
         }
 
-        private static class Column {
-            private final String name;
-            private final Object value;
-
-            public Column(String name, Object value) {
-                this.name = name;
-                this.value = value;
-            }
-
-            public String getName() {
-                return name;
-            }
-
-            public Object getValue() {
-                return value;
-            }
+        private record Column(String name, Object value) {
         }
     }
 }

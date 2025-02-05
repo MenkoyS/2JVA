@@ -1,15 +1,13 @@
-package Swing.Admin;
+package Swing.Menus;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Scanner;
 
-public class ManageWhitelist {
-    public static void main(String[] args) {
-
-        int frameWidth = 1200; // Width of the frame
-        int frameHeight = 800; // Height of the frame
+public class AdminGUI {
+    public static void main(int frameWidth, int frameHeight, Scanner scanner) {
         // Create a frame
-        JFrame frame = new JFrame("CLI.User Profile");
+        JFrame frame = new JFrame("Admin Profile");
         frame.setSize(frameWidth, frameHeight); // Set the size of the frame
 
         // Set the close operation for the frame
@@ -19,20 +17,24 @@ public class ManageWhitelist {
         JLabel welcomeLabel = new JLabel("Welcome to your profile!", SwingConstants.CENTER);
         welcomeLabel.setFont(new Font("Arial", Font.BOLD, 36)); // Set font for the label
 
+
         // Create buttons
-        JButton inventoryButton = new JButton("Add to WL");
-        JButton viewProfileButton = new JButton("Remove from WL");
-        JButton showStores = new JButton("Show the WL");
+        JButton inventoryButton = new JButton("Manage the inventory");
+        JButton viewProfileButton = new JButton("Manage Users");
+        JButton searchUserButton = new JButton("Manage Whitelist");
+        JButton createAccountButton = new JButton("Manage Stores");
+        JButton logoutButton = new JButton("Logout");
 
         // Set up a panel with a layout to add buttons below the label
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(3, 1, 10, 10)); // 7 rows, 1 column, with padding between buttons
+        buttonPanel.setLayout(new GridLayout(5, 1, 10, 10)); // 7 rows, 1 column, with padding between buttons
 
         // Add the buttons to the panel
         buttonPanel.add(inventoryButton);
         buttonPanel.add(viewProfileButton);
-        buttonPanel.add(showStores);
-
+        buttonPanel.add(searchUserButton);
+        buttonPanel.add(createAccountButton);
+        buttonPanel.add(logoutButton);
 
         // Set the layout for the frame's content pane
         frame.setLayout(new BorderLayout());

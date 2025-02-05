@@ -2,6 +2,7 @@ package Swing;
 
 import Database.DatabaseUtils;
 import Database.GenericSQLExecutor;
+import Swing.User.CreateNewAcc;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +10,7 @@ import java.awt.*;
 public class UserGUI {
     public static void main(String email, int frameWidth, int frameHeight) {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("User Profile");
+            JFrame frame = new JFrame("CLI.User Profile");
             frame.setSize(frameWidth, frameHeight);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -49,7 +50,7 @@ public class UserGUI {
             });
 
             JButton deleteProfileButton = new JButton("Delete Profile");
-            String storedPassword = DatabaseUtils.fetchSingleColumnValue("SELECT password FROM User WHERE email = ?", email);
+            String storedPassword = DatabaseUtils.fetchSingleColumnValue("SELECT password FROM CLI.User WHERE email = ?", email);
 
             deleteProfileButton.addActionListener(_ -> {
                 if (JOptionPane.showConfirmDialog(null, "Are you sure you want to delete your profile?", "Warning", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -62,7 +63,7 @@ public class UserGUI {
                         String enteredPassword = new String(passwordField.getPassword());
 
                         if (enteredEmail.equals(email) && enteredPassword.equals(storedPassword)) {
-                            GenericSQLExecutor.executeQuery("DELETE FROM User WHERE email = ? AND password = ?", enteredEmail, enteredPassword);
+                            GenericSQLExecutor.executeQuery("DELETE FROM CLI.User WHERE email = ? AND password = ?", enteredEmail, enteredPassword);
                             JOptionPane.showMessageDialog(null, "Profile deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                             frame.dispose();
                             WelcomePage.displayWelcomePage(frameWidth, frameHeight);

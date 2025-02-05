@@ -1,6 +1,6 @@
 package Utils;
 
-import Admin.AdminProfile;
+import CLI.Admin.AdminProfile;
 import Database.GenericSQLExecutor;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class CreateNewUserVerify {
             System.out.println("WHITELISTED");
         } else {
             System.out.println("NOT WHITELISTED");
-            AdminProfile.main(scanner);
+            AdminProfile.reception(scanner);
         }
     }
 
@@ -24,16 +24,16 @@ public class CreateNewUserVerify {
             System.out.println("PASSWORDS MATCH");
         } else {
             System.out.println("PASSWORDS DO NOT MATCH");
-            AdminProfile.main(scanner);
+            AdminProfile.reception(scanner);
         }
     }
 
     public static void isPseudoAvailable(String pseudo, Scanner scanner) {
-        List<GenericSQLExecutor.ResultSetRow> rows = GenericSQLExecutor.executeQuery("SELECT * FROM User WHERE pseudo = '" + pseudo + "'");
+        List<GenericSQLExecutor.ResultSetRow> rows = GenericSQLExecutor.executeQuery("SELECT * FROM CLI.User WHERE pseudo = '" + pseudo + "'");
 
         if (rows != null && !rows.isEmpty()) {
             System.out.println("PSEUDO ALREADY TAKEN");
-            AdminProfile.main(scanner);
+            AdminProfile.reception(scanner);
         } else {
             System.out.println("PSEUDO AVAILABLE");
         }

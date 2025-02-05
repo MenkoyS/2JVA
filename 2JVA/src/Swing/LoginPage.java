@@ -49,7 +49,7 @@ public class LoginPage {
         return label;
     }
 
-    static JLabel createBackButton(JFrame frame, Runnable onClickAction) {
+    public static JLabel createBackButton(JFrame frame, Runnable onClickAction) {
         ImageIcon originalIcon = new ImageIcon(Objects.requireNonNull(WelcomePage.class.getResource("arrow.png")));
         Image scaledImage = originalIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
         ImageIcon arrow = new ImageIcon(scaledImage);
