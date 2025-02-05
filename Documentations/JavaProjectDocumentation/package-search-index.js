@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"CLI.Admin"},{"l":"CLI.Common"},{"l":"CLI.Menus"},{"l":"CLI.User"},{"l":"Database"},{"l":"Swing"},{"l":"Swing.Admin"},{"l":"Swing.Menus"},{"l":"Swing.User"},{"l":"Utils"}];updateSearchResults();

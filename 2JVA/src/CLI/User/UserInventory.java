@@ -15,7 +15,6 @@ public class UserInventory {
             System.out.println("Error: Store ID not found.");
             return;
         }
-
         List<GenericSQLExecutor.ResultSetRow> inventory = fetchInventory(storeId);
         displayInventory(inventory);
         handleUserChoice(scanner, storeId, idUser, userName);

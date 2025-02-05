@@ -38,8 +38,8 @@ public class RegisterPageVerify {
     }
 
     private static void registerUser(String email, String pseudo, String password, String storeId) {
-        GenericSQLExecutor.executeQuery("INSERT INTO CLI.User (email, pseudo, password, isUser, store_id) VALUES (?, ?, ?, 1, ?)", email, pseudo, password, storeId);
-        System.out.println("CLI.User registered successfully.");
+        GenericSQLExecutor.executeQuery("INSERT INTO User (email, pseudo, password, isUser, store_id) VALUES (?, ?, ?, 1, ?)", email, pseudo, password, storeId);
+        System.out.println("User registered successfully.");
     }
 
     private static void removeFromWhitelist(String email) {

@@ -15,7 +15,6 @@ public class SelectUser {
         List<GenericSQLExecutor.ResultSetRow> rows = GenericSQLExecutor.executeQuery("SELECT * FROM User WHERE pseudo = ?", pseudo);
 
         if (rows != null && !rows.isEmpty()) {
-            System.out.println("User found: " + rows);
             return pseudo;
         } else {
             System.out.println("Error: No user found with the provided pseudo.");
@@ -31,7 +30,6 @@ public class SelectUser {
         List<GenericSQLExecutor.ResultSetRow> rows = GenericSQLExecutor.executeQuery("SELECT * FROM User WHERE email = ?", email);
 
         if (rows != null && !rows.isEmpty()) {
-            System.out.println("User found: " + rows);
             return email;
         } else {
             System.out.println("Error: No user found with the provided email.");

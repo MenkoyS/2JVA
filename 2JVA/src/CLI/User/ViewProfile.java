@@ -25,9 +25,6 @@ public class ViewProfile {
             String storeId = ExtractValue.extractValue(storeIdRows.get(i).toString());
             System.out.println("Email: " + email + " | Pseudo : " + pseudo + " | Store ID : " + storeId);
         }
-        System.out.println();
-        System.out.println("Press enter to continue...");
-        scanner.nextLine();
         UserProfile.reception(scanner, idUser, userName);
     }
 }

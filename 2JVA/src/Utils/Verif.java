@@ -45,10 +45,7 @@ public class Verif {
     }
 
     public static void verifyAdmin(Scanner scanner, String idUser, String userName) {
-        System.out.println(idUser);
         String isUser = DatabaseUtils.fetchSingleColumnValue("SELECT isUser FROM User WHERE isUser = ?", idUser);
-        System.out.println(isUser);
-
         assert isUser != null;
         if (isUser.equals("true")) {
             UserProfile.reception(scanner, idUser, userName);

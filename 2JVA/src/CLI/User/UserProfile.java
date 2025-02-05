@@ -2,6 +2,8 @@ package CLI.User;
 
 import CLI.Common.PrintInventory;
 import CLI.Common.UserSearch;
+import CLI.Menus.WelcomeMenu;
+import Swing.WelcomePage;
 import Utils.Verif;
 
 import java.util.Scanner;
@@ -36,13 +38,14 @@ public class UserProfile {
             case 3 -> EditProfile.editUser(scanner, idUser, userName);
             case 4 -> UserSearch.searchUser(scanner, idUser, userName);
             case 5 -> CreateNewUser.userCreation(scanner, idUser, userName);
-            case 6 -> logout();
+            case 6 -> logout(scanner);
             case 7 -> DeleteProfile.deleteUser(scanner, idUser, userName);
             default -> System.out.println("Invalid choice");
         }
     }
 
-    private static void logout() {
+    private static void logout(Scanner scanner) {
         System.out.println("You have been logged out successfully.");
+        WelcomeMenu.launch(scanner);
     }
 }

@@ -54,7 +54,7 @@ public class EditInfo {
     }
 
     public static void changeAffiliation(String type, Scanner scanner) {
-        System.out.println("Enter the new affiliation: ");
+        System.out.println("Enter the name of the new affiliation: ");
         scanner.nextLine(); // buffer
         String affiliationName = scanner.next();
 
@@ -63,7 +63,7 @@ public class EditInfo {
 
         if (storeId == null) {
             System.out.println("Store not found.");
-            return;
+            AdminProfile.reception(scanner);
         }
 
         // Find out if the search method returned a pseudo or an email

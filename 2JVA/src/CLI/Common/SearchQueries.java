@@ -11,15 +11,15 @@ import java.util.Scanner;
 public class SearchQueries {
     public static void searchUser(int choice, Scanner scanner, String idUser, String userName) {
         switch (choice) {
-            case 1 -> searchByUsername(scanner);
-            case 2 -> searchByEmail(scanner);
-            case 3 -> searchByStore(scanner);
+            case 1 -> searchByUsername(scanner, userName);
+            case 2 -> searchByEmail(scanner, userName);
+            case 3 -> searchByStore(scanner, userName);
             case 4 -> UserProfile.reception(scanner, idUser, userName);
             default -> System.out.println("Invalid choice, please try again.");
         }
     }
 
-    public static void searchByUsername(Scanner scanner) {
+    public static void searchByUsername(Scanner scanner, String userName) {
         System.out.println("Enter the username (pseudo): ");
         scanner.nextLine();
         String userPseudo = scanner.nextLine();
@@ -30,14 +30,16 @@ public class SearchQueries {
 
         if (storeId == null || pseudo == null || email == null) {
             System.out.println("User not found or incomplete data.");
+            UserProfile.reception(scanner, userName, userName);
             return;
         }
 
         String storeName = DatabaseUtils.fetchSingleColumnValue("SELECT name FROM Store WHERE store_id = ?", storeId);
         System.out.println("Email: " + email + " | Pseudo: " + pseudo + " | Affiliation: " + storeName);
+        UserProfile.reception(scanner, userName, userName);
     }
 
-    public static void searchByEmail(Scanner scanner) {
+    public static void searchByEmail(Scanner scanner, String userName) {
         System.out.println("Enter the email address: ");
         scanner.nextLine();
         String userEmail = scanner.nextLine();
@@ -48,14 +50,16 @@ public class SearchQueries {
 
         if (email == null || pseudo == null || storeId == null) {
             System.out.println("Email not found or incomplete data.");
+            UserProfile.reception(scanner, userName, userName);
             return;
         }
 
         String storeName = DatabaseUtils.fetchSingleColumnValue("SELECT name FROM Store WHERE store_id = ?", storeId);
         System.out.println("Email: " + email + " | Pseudo: " + pseudo + " | Affiliation: " + storeName);
+        UserProfile.reception(scanner, userName, userName);
     }
 
-    public static void searchByStore(Scanner scanner) {
+    public static void searchByStore(Scanner scanner, String userName) {
         System.out.println("Enter the store name for affiliation: ");
         scanner.nextLine();
         String storeName = scanner.nextLine();
@@ -64,6 +68,7 @@ public class SearchQueries {
 
         if (storeId == null) {
             System.out.println("Store not found.");
+            UserProfile.reception(scanner, userName, userName);
             return;
         }
 
@@ -72,6 +77,7 @@ public class SearchQueries {
 
         if (emailRows == null || pseudoRows == null || emailRows.isEmpty() || pseudoRows.isEmpty()) {
             System.out.println("No users affiliated with this store.");
+            UserProfile.reception(scanner, userName, userName);
             return;
         }
 
@@ -80,5 +86,6 @@ public class SearchQueries {
             String pseudo = ExtractValue.extractValue(pseudoRows.get(i).toString());
             System.out.println("Email: " + email + " | Pseudo: " + pseudo + " | Affiliation: " + storeName);
         }
+        UserProfile.reception(scanner, userName, userName);
     }
 }
