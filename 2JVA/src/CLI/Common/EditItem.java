@@ -17,6 +17,10 @@ public class EditItem {
 
         GenericSQLExecutor.executeQuery("UPDATE Inventory SET quantity = quantity + ? WHERE name = ? AND store_id = ?", quantityIncrease, itemNameIncrease, storeId);
 
+        // Add a verify function here to check if :
+        // the item exists in the inventory chosen
+        // the quantity does not exceed 50 nor go below 0
+
         System.out.println("Quantity increased by " + quantityIncrease);
         System.out.println("New quantity: " + GenericSQLExecutor.executeQuery("SELECT quantity FROM Inventory WHERE name = ? AND store_id = ?", itemNameIncrease, storeId));
 
@@ -30,6 +34,10 @@ public class EditItem {
         int quantityDecrease = Verif.getValidEntry(1, 49, scanner);
 
         GenericSQLExecutor.executeQuery("UPDATE Inventory SET quantity = quantity - ? WHERE name = ? AND store_id = ?", quantityDecrease, itemNameDecrease, storeId);
+
+        // Add a verify function here to check if :
+        // the item exists in the inventory chosen
+        // the quantity does not exceed 50 nor go below 0
 
         System.out.println("Quantity decreased by " + quantityDecrease);
         System.out.println("New quantity: " + GenericSQLExecutor.executeQuery("SELECT quantity FROM Inventory WHERE name = ? AND store_id = ?", itemNameDecrease, storeId));

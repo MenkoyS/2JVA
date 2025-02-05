@@ -14,7 +14,7 @@ public class SearchQueries {
             case 1 -> searchByUsername(scanner);
             case 2 -> searchByEmail(scanner);
             case 3 -> searchByStore(scanner);
-            case 4 -> UserProfile.reception(scanner, idUser, userName, false);
+            case 4 -> UserProfile.reception(scanner, idUser, userName);
             default -> System.out.println("Invalid choice, please try again.");
         }
     }

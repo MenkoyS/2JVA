@@ -23,11 +23,11 @@ public class CreateNewUserManager {
                 LoginPage.cli(scanner);
                 break;
             case 2:
-                UserProfile.reception(scanner, idUser, userName, false);
+                UserProfile.reception(scanner, idUser, userName);
                 break;
             default:
                 System.out.println("Invalid choice, returning to the profile menu");
-                UserProfile.reception(scanner, idUser, userName, false);
+                UserProfile.reception(scanner, idUser, userName);
         }
     }
 }

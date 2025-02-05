@@ -33,8 +33,8 @@ public class AdminInventory {
         switch (choice) {
             case 1 -> EditItem.add(scanner, storeId);
             case 2 -> EditItem.remove(scanner, storeId);
-            case 3 -> EditItem.increase(scanner, storeId, null, null);
-            case 4 -> EditItem.decrease(scanner, storeId, null, null);
+            case 3 -> EditItem.increase(scanner, storeId, "0", null);
+            case 4 -> EditItem.decrease(scanner, storeId, "0", null);
             case 5 -> AdminProfile.reception(scanner);
             default -> System.out.println("Invalid choice");
         }

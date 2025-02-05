@@ -25,7 +25,7 @@ public class EditProfile {
             case 2 -> EditInfo.changeEmail(scanner, idUser, userName);
             case 3 -> EditInfo.changePassword(scanner, idUser, userName);
             case 4 -> {
-                UserProfile.reception(scanner, idUser, userName, false);
+                UserProfile.reception(scanner, idUser, userName);
                 return;
             }
             default -> System.out.println("Invalid choice, please try again.");

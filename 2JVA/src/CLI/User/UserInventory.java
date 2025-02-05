@@ -48,7 +48,7 @@ public class UserInventory {
         switch (choice) {
             case 1 -> EditItem.increase(scanner, storeId, idUser, userName);
             case 2 -> EditItem.decrease(scanner, storeId, idUser, userName);
-            case 3 -> UserProfile.reception(scanner, idUser, userName, false);
+            case 3 -> UserProfile.reception(scanner, idUser, userName);
             default -> System.out.println("Invalid choice");
         }
     }

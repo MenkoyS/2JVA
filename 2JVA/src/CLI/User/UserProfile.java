@@ -7,7 +7,7 @@ import Utils.Verif;
 import java.util.Scanner;
 
 public class UserProfile {
-    public static void reception(Scanner scanner, String idUser, String userName, boolean isGui) {
+    public static void reception(Scanner scanner, String idUser, String userName) {
         greetUser(userName);
         displayMenu();
         handleUserChoice(Verif.getValidEntry(1, 7, scanner), scanner, idUser, userName);

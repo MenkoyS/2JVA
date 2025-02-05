@@ -15,7 +15,7 @@ public class DeleteProfile {
 
         switch (choice) {
             case 1 -> DeleteProfileVerify.deleteUser(scanner);
-            case 2 -> UserProfile.reception(scanner, idUser, userName, false);
+            case 2 -> UserProfile.reception(scanner, idUser, userName);
             default -> System.out.println("Invalid choice");
         }
     }

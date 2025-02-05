@@ -32,7 +32,7 @@ public class Verif {
         if (isGui) {
             // TODO: Implement GUI user profile
         } else {
-            UserProfile.reception(scanner, idUser, userName, false);
+            UserProfile.reception(scanner, idUser, userName);
         }
     }
 
@@ -45,16 +45,14 @@ public class Verif {
     }
 
     public static void verifyAdmin(Scanner scanner, String idUser, String userName) {
-        String isUser = DatabaseUtils.fetchSingleColumnValue("SELECT isUser FROM User WHERE id = ?", idUser);
+        System.out.println(idUser);
+        String isUser = DatabaseUtils.fetchSingleColumnValue("SELECT isUser FROM User WHERE isUser = ?", idUser);
+        System.out.println(isUser);
 
-        if (isUser == null) {
-            System.out.println("Error fetching user data.");
-            return;
-        }
-
-        if (isUser.equals("0")) {
-            // UserProfile.main(scanner, idUser, userName);
-        } else if (isUser.equals("1")) {
+        assert isUser != null;
+        if (isUser.equals("true")) {
+            UserProfile.reception(scanner, idUser, userName);
+        } else if (isUser.equals("false")) {
             AdminProfile.reception(scanner);
         } else {
             System.out.println("Error: Invalid user type.");
