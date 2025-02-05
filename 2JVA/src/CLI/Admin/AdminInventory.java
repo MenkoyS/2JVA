@@ -14,7 +14,6 @@ public class AdminInventory {
 
         if (inventory == null || inventory.isEmpty()) {
             System.out.println("Inventory empty");
-            AdminProfile.reception(scanner);
         } else {
             System.out.println("Inventory of this store:" + "\n");
             System.out.println(inventory + "\n");

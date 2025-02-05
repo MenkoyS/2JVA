@@ -14,10 +14,10 @@ public class DeleteProfileVerify {
         System.out.println("Please enter your password to delete your profile: ");
         String password = scanner.next();
 
-        List<GenericSQLExecutor.ResultSetRow> rows = GenericSQLExecutor.executeQuery("SELECT * FROM CLI.User WHERE email = '" + email + "' AND password = '" + password + "';");
+        List<GenericSQLExecutor.ResultSetRow> rows = GenericSQLExecutor.executeQuery("SELECT * FROM User WHERE email = '" + email + "' AND password = '" + password + "';");
 
         if (rows!=null && !rows.isEmpty()) {
-            GenericSQLExecutor.executeQuery("DELETE FROM CLI.User WHERE email = '" + email + "' AND password = '" + password + "';");
+            GenericSQLExecutor.executeQuery("DELETE FROM User WHERE email = '" + email + "' AND password = '" + password + "';");
             System.out.println("Profile deleted successfully!");
 
             // Redirect to the login page

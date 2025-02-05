@@ -15,7 +15,7 @@ public class LoginPageVerify {
         String email = userDetails[0];
         String password = userDetails[1];
 
-        List<GenericSQLExecutor.ResultSetRow> rows = GenericSQLExecutor.executeQuery("SELECT * FROM CLI.User WHERE email = ? AND password = ?", email, password);
+        List<GenericSQLExecutor.ResultSetRow> rows = GenericSQLExecutor.executeQuery("SELECT * FROM User WHERE email = ? AND password = ?", email, password);
 
         if (rows != null && !rows.isEmpty() && !isGui) {
             System.out.println("You have successfully logged in");

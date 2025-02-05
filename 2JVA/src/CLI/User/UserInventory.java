@@ -22,7 +22,7 @@ public class UserInventory {
     }
 
     private static String getStoreId(String idUser) {
-        return DatabaseUtils.fetchSingleColumnValue("SELECT store_id FROM CLI.User WHERE id = ?", idUser);
+        return DatabaseUtils.fetchSingleColumnValue("SELECT store_id FROM User WHERE id = ?", idUser);
     }
 
     private static List<GenericSQLExecutor.ResultSetRow> fetchInventory(String storeId) {

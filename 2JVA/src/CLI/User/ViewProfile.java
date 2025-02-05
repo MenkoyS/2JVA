@@ -9,9 +9,9 @@ import java.util.Scanner;
 public class ViewProfile {
     public static void userProfile(Scanner scanner, String idUser, String userName) {
         // Fetch all users pseudo and email
-        List<GenericSQLExecutor.ResultSetRow> emailRows = GenericSQLExecutor.executeQuery("SELECT email FROM CLI.User WHERE id = ?", idUser);
-        List<GenericSQLExecutor.ResultSetRow> pseudoRows = GenericSQLExecutor.executeQuery("SELECT pseudo FROM CLI.User WHERE id = ?", idUser);
-        List<GenericSQLExecutor.ResultSetRow> storeIdRows = GenericSQLExecutor.executeQuery("SELECT store_id FROM CLI.User WHERE id = ?", idUser);
+        List<GenericSQLExecutor.ResultSetRow> emailRows = GenericSQLExecutor.executeQuery("SELECT email FROM User WHERE id = ?", idUser);
+        List<GenericSQLExecutor.ResultSetRow> pseudoRows = GenericSQLExecutor.executeQuery("SELECT pseudo FROM User WHERE id = ?", idUser);
+        List<GenericSQLExecutor.ResultSetRow> storeIdRows = GenericSQLExecutor.executeQuery("SELECT store_id FROM User WHERE id = ?", idUser);
 
         if (emailRows == null || pseudoRows == null || storeIdRows == null || emailRows.isEmpty() || pseudoRows.isEmpty() || storeIdRows.isEmpty()) {
             System.out.println("No users found.");

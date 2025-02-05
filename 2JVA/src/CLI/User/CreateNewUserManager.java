@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class CreateNewUserManager {
     public static void addUserToDatabase(String email, String pseudo, String password) {
-        GenericSQLExecutor.executeQuery("INSERT INTO CLI.User (email, pseudo, password, isUser) VALUES (?, ?, ?, ?)", email, pseudo, password, 1);
+        GenericSQLExecutor.executeQuery("INSERT INTO User (email, pseudo, password, isUser) VALUES (?, ?, ?, ?)", email, pseudo, password, 1);
     }
 
     public static void redirection(Scanner scanner, String idUser, String userName) {
